@@ -1,0 +1,29 @@
+
+<nav class="navbar navbar-expand-md bg-primary navbar-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+  </button>
+  <a routerLink="first" class="navbar-brand btn btn-primary"><i class="fa fa-home" aria-hidden="true"></i></a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="!authenticated">
+      <li class="nav-item">
+        <a routerLink="main" routerLinkActive="active" class="btn btn-primary">หน้าหลัก</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="register" routerLinkActive="active" class="btn btn-primary">สมัครสมาชิก</a>
+      </li>
+      <li class ="nav-item">
+        <a routerLink="login" routerLinkActive="active" class="btn btn-primary">เข้าสู่ระบบ</a>
+      </li>
+    </ul>
+    
+  </div>
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="!authenticated">
+    <li class ="nav-item">
+      <a routerLink="logout" routerLinkActive="active" class="btn btn-primary"> ออกจากระบบ</a>
+    </li>
+  </ul>
+  
+
+
+</nav>

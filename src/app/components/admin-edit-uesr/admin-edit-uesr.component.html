@@ -1,0 +1,120 @@
+<section class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">แบบฟอร์มเพิ่มสมาชิก</h3>
+
+            <form class="px-md-2" [formGroup]="edituserForm">
+              <div>
+                  <div class="d-flex justify-content-center mb-4">
+                      <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                      class="rounded-circle" alt="example placeholder" style="width: 200px;" />
+                  </div>
+                  <div class="d-flex justify-content-center">
+                      <div class="btn btn-primary btn-rounded">
+                          <label class="form-label text-white m-1" for="customFile2">Choose file</label>
+                          <input type="file" id = "image"  multiple class="form-control d-none" formControlName="img" />
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+              <div class="form-outline col-md-6 mb-4 mt-3">
+                <input value= "{{results.firstname}}" type="text" class="form-control" id= "firstname" [(ngModel)]="firstname" placeholder="Firstname" formControlName="Firstname" />
+                <div *ngIf="Firstname?.invalid && (Firstname?.dirty || Firstname?.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="Firstname?.errors?.['required']">
+                      โปรดระบุชื่อ
+                  </div>
+              </div>
+              </div>
+              <div class="form-outline col-md-6 mb-4 mt-3">
+                  <input value= "{{results.lastname}}" type="text" class="form-control" id= "lastname" [(ngModel)]="lastname" placeholder="Lastname" formControlName="Lastname" />
+                  <div *ngIf="Lastname?.invalid && (Lastname?.dirty || Lastname?.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="Lastname?.errors?.['required']">
+                          โปรดระบุนามสกุล
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                    <input value= "{{results.age}}" type="text" class="form-control" id= "age" [(ngModel)]="age" formControlName="age2" placeholder="อายุ" />
+                    <div *ngIf="age2?.invalid && (age2?.dirty || age2?.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="age2?.errors?.['required']">
+                          โปรดระบุอายุ
+                      </div>
+                      <div *ngIf="age2?.errors?.['min']">
+                          อายุต้องไม่ติดลบ
+                      </div>
+                  </div>
+                  
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <select value= "{{results.gen}}"  id="gen" [(ngModel)]="gen" formControlName="gender"
+                  >
+                    <option value="Male" >Male</option>
+                    <option value="Female" >Female</option>
+
+                  </select>
+
+                </div>
+              </div>
+              <div class="row mb-4 pb-2 pb-md-0 mb-2 md-5">
+                <div class="col-md-6">
+
+                  <div class="form-outline">
+                    <input value= "{{results.username}}" type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="username" formControlName="username2"/>
+                     <div *ngIf="username2?.invalid && (username2?.dirty || username2?.touched)" class="alert alert-danger">
+                                          <div *ngIf="username2?.errors?.['required']">
+                                              โปรดกรอกข้อมูล
+                                          </div>
+                                      </div>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+
+                  <div class="form-outline">
+                    <input value= "{{results.password}}" type="text" class="form-control" id="password" [(ngModel)]="password" placeholder="password" formControlName="password2"/>
+                    <button type="button" class="btn btn-outline-danger btn-sm mt-1" (click)="onClickToGoodPassword()"><i class='bx bx-error'></i></button>
+                  </div>
+                  <div class="alert alert-danger mt-1" *ngIf="CommuData">
+                    <app-goodpassword [CommuData]="CommuData"></app-goodpassword>
+                  </div>
+                  <div *ngIf="password2?.invalid && (password2?.dirty || password2?.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="password2?.errors?.['required']">
+                          โปรดระบุรหัสผ่าน
+                      </div>
+                      <div *ngIf="password2?.errors?.['minLength'] || password2?.errors?.['pattern']">
+                          รหัสผ่านไม่ถูกต้อง
+                      </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="form-outline mb-4">
+                  <input value= "{{results.phone}}" type="text" class="form-control" id="phone" [(ngModel)]="phone" placeholder="phonenumber" formControlName="phone2"/>
+                  <div *ngIf="phone2?.invalid && (phone2?.dirty || phone2?.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="phone2?.errors?.['required']">
+                          โปรดระบุเบอร์โทรศัพท์
+                      </div>
+                  </div>
+                </div>
+                <div class="text-center">
+              <button type="submit" class="btn btn-success btn-lg mb-1" (click)="editUser()">เพิ่มข้อมูลสมาชิก</button>
+                </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
